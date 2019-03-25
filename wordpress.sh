@@ -61,7 +61,7 @@ service apache2 restart;
 wget https://github.com/lamazingco/onehour-resources/raw/master/theme.zip -O /tmp/theme.zip;
 cd /tmp/;
 unzip /tmp/theme.zip;
-cp -Rf /tmp/revolution /var/www/html/wp-content/themes/;
+cp -Rf /tmp/foton /var/www/html/wp-content/themes/;
 
 
 
