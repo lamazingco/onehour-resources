@@ -53,7 +53,7 @@ a2enmod rewrite;
 sed -i 's/^upload_max_filesize.*/upload_max_filesize = 64M/' /etc/php/7.2/apache2/php.ini
 sed -i 's/^post_max_size.*/post_max_size = 64M/' /etc/php/7.2/apache2/php.ini
 sed -i 's/^memory_limit.*/memory_limit = 128M/' /etc/php/7.2/apache2/php.ini
-sed -i 's/^max_execution_time.*/max_execution_time = 300M/' /etc/php/7.2/apache2/php.ini
+sed -i 's/^max_execution_time.*/max_execution_time = 300/' /etc/php/7.2/apache2/php.ini
 
 service apache2 restart;
 
@@ -63,5 +63,23 @@ cd /tmp/;
 unzip /tmp/theme.zip;
 cp -Rf /tmp/foton /var/www/html/wp-content/themes/;
 
+# install wp cli to control wordpress from command line
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar;
+cd /tmp/;
+chmod +x wp-cli.phar;
+mv wp-cli.phar /usr/local/bin/wp;
 
+
+# activate foton theme by default
+cd /var/www/html/;
+wp theme activate foton;
+sudo -u www-data wp theme activate foton;
+
+# install & activate plugins required for foton
+sudo -u www-data wp plugin install wp-content/themes/foton/includes/plugins/foton-core.zip --activate
+sudo -u www-data wp plugin install wp-content/themes/foton/includes/plugins/foton-instagram-feed.zip --activate
+sudo -u www-data wp plugin install wp-content/themes/foton/includes/plugins/foton-twitter-feed.zip --activate
+sudo -u www-data wp plugin install wp-content/themes/foton/includes/plugins/revslider.zip --activate
+sudo -u www-data wp plugin install wp-content/themes/foton/includes/plugins/js_composer.zip --activate
+sudo -u www-data wp plugin install contact-form-7 --activate
 
