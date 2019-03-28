@@ -20,10 +20,7 @@ apt-get update;
 apt-get -y upgrade;
 
 # Install Apache/MySQL
-apt-get -y install apache2 php php-mysql libapache2-mod-php7.2 php7.2-mysql php7.2-curl php7.2-zip php7.2-json php7.2-xml mysql-server mysql-client unzip wget;
-
-# fix broken installs if any
-apt --fix-broken install;
+apt-get -y install apache2 php php-mysql libapache2-mod-php7.2 php7.2-mysql php7.2-curl php7.2-zip php7.2-json php7.2-xml mysql-server-5.7 mysql-client-5.7 unzip wget;
 
 # Download and uncompress WordPress
 wget https://wordpress.org/latest.zip -O /tmp/wordpress.zip;
